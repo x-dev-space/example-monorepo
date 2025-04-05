@@ -12,10 +12,6 @@ on:
       jira_title:
         description: 'Jira Issue Title'
         required: true
-      jira_update:
-        description: 'Update Jira with branch info'
-        required: false
-        default: 'true'
 
 jobs:
   create-branch:
