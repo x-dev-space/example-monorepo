@@ -13,6 +13,9 @@ on:
         description: 'Jira Issue Title'
         required: true
 
+permissions:
+  contents: write
+
 jobs:
   create-branch:
     runs-on: ubuntu-latest
@@ -50,13 +53,16 @@ jobs:
           echo "base_branch=$BASE_BRANCH" >> $GITHUB_OUTPUT
 
       - name: Create branch
+        id: create_branch
         run: |
           BRANCH_NAME="${{ steps.extract_branch.outputs.branch_name }}"
           BASE_BRANCH="${{ steps.extract_branch.outputs.base_branch }}"
+          WAS_BRANCH_CREATED=false
 
           # Check if branch already exists
           if git ls-remote --heads origin $BRANCH_NAME | grep -q $BRANCH_NAME; then
             echo "Branch $BRANCH_NAME already exists. Skipping creation."
+            echo "was_branch_created=$WAS_BRANCH_CREATED" >> $GITHUB_OUTPUT
             exit 0
           fi
 
@@ -66,17 +72,17 @@ jobs:
           git checkout -b $BRANCH_NAME
           git push origin $BRANCH_NAME
 
+          WAS_BRANCH_CREATED=true
+          echo "was_branch_created=$WAS_BRANCH_CREATED" >> $GITHUB_OUTPUT
+
           echo "Created branch $BRANCH_NAME from $BASE_BRANCH"
 
-      # - name: Comment on Jira issue (optional)
-      #   if: ${{ github.event.client_payload.jira_update == true }}
-      #   run: |
-      #     # This would require additional setup with Jira API
-      #     # You can use a Jira CLI action or make an API call
-      #     echo "Would update Jira with branch info"
-      #     # Example with curl if you set up authentication
-      #     # curl -X POST \
-      #     #  -H "Authorization: Bearer $JIRA_TOKEN" \
-      #     #  -H "Content-Type: application/json" \
-      #     #  --data '{"body": "Created branch [[${{ steps.extract_branch.outputs.branch_name }}|https://github.com/${{ github.repository }}/tree/${{ steps.extract_branch.outputs.branch_name }}]]"}' \
-      #     #  https://your-domain.atlassian.net/rest/api/3/issue/${{ github.event.client_payload.issue_key }}/comment
+      - name: Alert branch was created
+        run: |
+          BRANCH_NAME="${{ steps.extract_branch.outputs.branch_name }}"
+          WAS_BRANCH_CREATED="${{ steps.create_branch.outputs.was_branch_created }}"
+
+          curl -X POST ${{ secrets.CONNECTOR_URL_TEST }} \
+            -H "x_dev_auth_header: ${{ secrets.X_DEV_AUTH_HEADER }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"branch_name\":\"${BRANCH_NAME}\",\"was_branch_created\":${WAS_BRANCH_CREATED}}"
