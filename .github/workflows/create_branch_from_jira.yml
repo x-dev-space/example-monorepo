@@ -26,11 +26,14 @@ jobs:
         id: extract_branch
         run: |
           # Extract data from client_payload
-          ISSUE_KEY="${{ github.event.jira_number}}"
-          ISSUE_TYPE="${{ github.event.jira_type }}"
-          ISSUE_TITLE="${{ github.event.jira_title}}"
+          ISSUE_KEY="${{ github.event.inputs.jira_number}}"
+          ISSUE_TYPE="${{ github.event.inputs.jira_type }}"
+          ISSUE_TITLE="${{ github.event.inputs.jira_title}}"
           BASE_BRANCH='main'
 
+          echo $ISSUE_KEY
+          echo $ISSUE_TYPE
+          echo $ISSUE_TITLE
 
           # Determine branch prefix based on issue type
           if [ "$ISSUE_TYPE" = "Bug" ]; then
