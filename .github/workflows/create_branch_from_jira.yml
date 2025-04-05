@@ -1,8 +1,21 @@
 name: Create Branch from Jira Issue
 
 on:
-  repository_dispatch:
-    types: [create-branch]
+  workflow_dispatch:
+    inputs:
+      jira_number:
+        description: 'Jira Issue Key'
+        required: true
+      jira_type:
+        description: 'Jira Issue Type'
+        required: true
+      jira_title:
+        description: 'Jira Issue Title'
+        required: true
+      jira_update:
+        description: 'Update Jira with branch info'
+        required: false
+        default: 'true'
 
 jobs:
   create-branch:
