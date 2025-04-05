@@ -51,6 +51,7 @@ jobs:
 
           echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
           echo "base_branch=$BASE_BRANCH" >> $GITHUB_OUTPUT
+          echo "issue_key=$ISSUE_KEY" >> $GITHUB_OUTPUT
 
       - name: Create branch
         id: create_branch
@@ -81,8 +82,9 @@ jobs:
         run: |
           BRANCH_NAME="${{ steps.extract_branch.outputs.branch_name }}"
           WAS_BRANCH_CREATED="${{ steps.create_branch.outputs.was_branch_created }}"
+          ISSUE_KEY="${{ steps.extract_branch.outputs.issue_key }}"
 
           curl -X POST ${{ secrets.CONNECTOR_URL_TEST }} \
-            -H "x_dev_auth_header: ${{ secrets.X_DEV_AUTH_HEADER }}" \
+            -H "x-dev-auth-header: ${{ secrets.X_DEV_AUTH_HEADER_PASS }}" \
             -H "Content-Type: application/json" \
-            -d "{\"branch_name\":\"${BRANCH_NAME}\",\"was_branch_created\":${WAS_BRANCH_CREATED}}"
+            -d "{\"branch_name\":\"${BRANCH_NAME}\",\"was_branch_created\":${WAS_BRANCH_CREATED},\"issue_key\":\"${ISSUE_KEY}\"}"
