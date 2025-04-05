@@ -84,7 +84,7 @@ jobs:
           WAS_BRANCH_CREATED="${{ steps.create_branch.outputs.was_branch_created }}"
           ISSUE_KEY="${{ steps.extract_branch.outputs.issue_key }}"
 
-          curl -X POST ${{ secrets.CONNECTOR_URL_TEST }} \
+          curl -X POST ${{ secrets.CONNECTOR_URL_PROD }} \
             -H "x-dev-auth-header: ${{ secrets.X_DEV_AUTH_HEADER_PASS }}" \
             -H "Content-Type: application/json" \
             -d "{\"branch_name\":\"${BRANCH_NAME}\",\"was_branch_created\":${WAS_BRANCH_CREATED},\"issue_key\":\"${ISSUE_KEY}\"}"
