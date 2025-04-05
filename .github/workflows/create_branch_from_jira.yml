@@ -31,10 +31,6 @@ jobs:
           ISSUE_TITLE="${{ github.event.inputs.jira_title}}"
           BASE_BRANCH='main'
 
-          echo $ISSUE_KEY
-          echo $ISSUE_TYPE
-          echo $ISSUE_TITLE
-
           # Determine branch prefix based on issue type
           if [ "$ISSUE_TYPE" = "Bug" ]; then
             PREFIX="bugfix"
@@ -49,29 +45,28 @@ jobs:
           FORMATTED_SUMMARY=$(echo "$ISSUE_TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-//' | sed 's/-$//')
           BRANCH_NAME="$PREFIX/$ISSUE_KEY-$FORMATTED_SUMMARY"
 
-          echo $BRANCH_NAME
 
           echo "branch_name=$BRANCH_NAME" >> $GITHUB_OUTPUT
           echo "base_branch=$BASE_BRANCH" >> $GITHUB_OUTPUT
 
-      # - name: Create branch
-      #   run: |
-      #     BRANCH_NAME="${{ steps.extract_branch.outputs.branch_name }}"
-      #     BASE_BRANCH="${{ steps.extract_branch.outputs.base_branch }}"
+      - name: Create branch
+        run: |
+          BRANCH_NAME="${{ steps.extract_branch.outputs.branch_name }}"
+          BASE_BRANCH="${{ steps.extract_branch.outputs.base_branch }}"
 
-      #     # Check if branch already exists
-      #     if git ls-remote --heads origin $BRANCH_NAME | grep -q $BRANCH_NAME; then
-      #       echo "Branch $BRANCH_NAME already exists. Skipping creation."
-      #       exit 0
-      #     fi
+          # Check if branch already exists
+          if git ls-remote --heads origin $BRANCH_NAME | grep -q $BRANCH_NAME; then
+            echo "Branch $BRANCH_NAME already exists. Skipping creation."
+            exit 0
+          fi
 
-      #     # Create and push branch
-      #     git checkout $BASE_BRANCH
-      #     git pull origin $BASE_BRANCH
-      #     git checkout -b $BRANCH_NAME
-      #     git push origin $BRANCH_NAME
+          # Create and push branch
+          git checkout $BASE_BRANCH
+          git pull origin $BASE_BRANCH
+          git checkout -b $BRANCH_NAME
+          git push origin $BRANCH_NAME
 
-      #     echo "Created branch $BRANCH_NAME from $BASE_BRANCH"
+          echo "Created branch $BRANCH_NAME from $BASE_BRANCH"
 
       # - name: Comment on Jira issue (optional)
       #   if: ${{ github.event.client_payload.jira_update == true }}
