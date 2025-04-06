@@ -1,0 +1,6 @@
+echo "Cleaning up node_modules"
+pnpm clean
+echo "Installing fresh dependencies"
+pnpm i
+echo "Resetting Nx Daemon"
+rm -rf .nx && pnpm nx reset
