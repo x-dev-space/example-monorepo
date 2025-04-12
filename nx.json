@@ -2,10 +2,8 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "production": ["default"],
-    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
+    "production": ["default"]
   },
-  "nxCloudId": "67f0a274c0f89669bf2cdc91",
   "plugins": [
     {
       "plugin": "@nx/js/typescript",
