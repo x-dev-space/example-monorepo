@@ -1,11 +1,23 @@
 {
-  "name": "@example-monorepo/source",
+  "name": "example-monorepo",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "prepare": "husky",
-    "clean": "pnpm trash node_modules"
+    "clean": "pnpm trash node_modules",
+    "commit": "git-cz",
+    "update-pnpm": "npm install -g pnpm@$(cat .pnpm-version | tr -d '\n\r')"
   },
+  "engines": {
+    "node": "v22.13.0",
+    "pnpm": "9.15.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/@digitalroute/cz-conventional-changelog-for-jira"
+    }
+  },
+  "packageManager": "pnpm@9.15.3",
   "private": true,
   "devDependencies": {
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
