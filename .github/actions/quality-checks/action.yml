@@ -13,6 +13,11 @@ runs:
   using: 'composite'
   
   steps: 
+
+    - name: set-sha-action
+      id: set-sha-action
+      uses: nrwl/nx-set-shas@v4
+
     # Run quality checks and fail the deployment if any of the checks fail
     - name: Run Quality Checks
       shell: bash

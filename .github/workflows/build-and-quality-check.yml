@@ -13,11 +13,11 @@ permissions:
 jobs: 
    build-and-quality-check: 
     runs-on: ubuntu-latest
-    timeout-minutes: 5
-
+    timeout-minutes: 10
 
     steps:
-
         - uses: ./.github/actions/setup-e2e-dependencies
+
+        - uses: ./.github/actions/quality-checks
 
         
