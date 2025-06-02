@@ -1,0 +1,16 @@
+name: Setup E2E Dependencies
+description: Setup E2E dependencies for the project
+
+
+runs: 
+  using: 'composite'
+  steps: 
+   
+    - name: setup-dependencies-action
+      uses: ./.github/actions/setup-dependencies
+      
+
+    - name: install-e2e-dependencies
+      shell: bash
+      run: pnpm exec playwright install --with-deps
+    

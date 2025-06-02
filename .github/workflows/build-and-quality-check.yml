@@ -1,0 +1,23 @@
+name: Build and Quality Check
+
+on: 
+    pull_request: 
+      branches: 
+        - main
+
+permissions: 
+  actions: read
+  pull-requests: write
+  contents: read
+
+jobs: 
+   build-and-quality-check: 
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+
+    steps:
+
+        - uses: ./.github/actions/setup-e2e-dependencies
+
+        
