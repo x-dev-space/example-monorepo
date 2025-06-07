@@ -1,0 +1,19 @@
+name: Setup Dependencies
+description: Setup base dependenceies for the project
+
+runs:
+  using: 'composite'
+  steps:
+  # Relies on the pnpm version defined in the packageManager field in package.json
+    - uses: pnpm/action-setup@v4
+
+    - uses: actions/setup-node@v4
+      name: Install Node
+      with:
+        node-version-file: '.node-version'
+        cache: 'pnpm'
+        cache-dependency-path: 'pnpm-lock.yaml'
+
+    - name: Install dependencies
+      shell: bash
+      run: pnpm i
