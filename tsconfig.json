@@ -3,11 +3,5 @@
   "compileOnSave": false,
   "files": [],
   "references": [
-    {
-      "path": "./apps/examples/test-app-e2e"
-    },
-    {
-      "path": "./apps/examples/test-app"
-    }
   ]
 }
