@@ -1,18 +1,18 @@
 name: Deploy to Production
 
-on: 
+on:
   # Trigger on PR merge to main
   pull_request:
     types: [closed]
     branches:
       - main
-  
+
   # Trigger on direct push to main
   push:
     branches:
       - main
 
-jobs: 
+jobs:
   deploy-prod:
     # For PR trigger: only run if PR was merged
     # For push trigger: always run
@@ -20,12 +20,16 @@ jobs:
       (github.event_name == 'pull_request' && github.event.pull_request.merged == true) ||
       github.event_name == 'push'
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    steps: 
-        - name: Setup Dependencies
-          uses: ./.github/actions/setup-e2e-dependencies
+      - name: Setup Dependencies
+        uses: ./.github/actions/setup-e2e-dependencies
 
-        - name: Run E2E and Deploy to Prod
-          uses: ./.github/actions/deploy-prod
-          with:
-             ZEPHYR_API_KEY: ${{ secrets.ZE_AUTH_TOKEN }}
+      - name: Run E2E and Deploy to Prod
+        uses: ./.github/actions/deploy-projects
+        with:
+          ZEPHYR_API_KEY: ${{ secrets.ZE_AUTH_TOKEN }}

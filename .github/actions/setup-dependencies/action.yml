@@ -1,28 +1,19 @@
 name: Setup Dependencies
 description: Setup base dependenceies for the project
 
-
-runs: 
+runs:
   using: 'composite'
-  steps: 
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    
-    # Relies on the pnpm version defined in the packageManager field in package.json
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v4
-      with:
-        run-install: false
+  steps:
+  # Relies on the pnpm version defined in the packageManager field in package.json
+    - uses: pnpm/action-setup@v4
 
-    - name: Install Node
-      uses: actions/setup-node@v4
+    - uses: actions/setup-node@v4
+      name: Install Node
       with:
         node-version-file: '.node-version'
         cache: 'pnpm'
         cache-dependency-path: 'pnpm-lock.yaml'
 
     - name: Install dependencies
+      shell: bash
       run: pnpm i
-    
