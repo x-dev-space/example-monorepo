@@ -166,10 +166,6 @@ importers:
         specifier: ^0.0.50
         version: 0.0.50(@swc/helpers@0.5.15)(encoding@0.1.13)(webpack@5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15)))
 
-  apps/examples/test-app: {}
-
-  apps/examples/test-app-e2e: {}
-
 packages:
 
   '@alloc/quick-lru@5.2.0':
@@ -10231,7 +10227,7 @@ snapshots:
 
   axe-core@4.10.3: {}
 
-  axios-retry@4.5.0(axios@1.9.0):
+  axios-retry@4.5.0(axios@1.9.0(debug@4.4.0)):
     dependencies:
       axios: 1.9.0(debug@4.4.0)
       is-retry-allowed: 2.2.0
@@ -15107,7 +15103,7 @@ snapshots:
   zephyr-agent@0.0.50(encoding@0.1.13):
     dependencies:
       axios: 1.9.0(debug@4.4.0)
-      axios-retry: 4.5.0(axios@1.9.0)
+      axios-retry: 4.5.0(axios@1.9.0(debug@4.4.0))
       cloudflare: 3.5.0(encoding@0.1.13)
       debug: 4.4.0
       git-url-parse: 15.0.0
