@@ -19,7 +19,7 @@
           "apps/appContainer/src/favicon.ico",
           "apps/appContainer/src/assets"
         ],
-        "rspackConfig": "apps/appContainer/rspack.config.ts",
+        "rspackConfig": "apps/appContainer/rspack.config.dev.ts",
         "postcssConfig": "apps/appContainer/postcss.config.js",
         "styles": ["apps/appContainer/src/styles.css"],
         "scripts": [],
@@ -42,6 +42,9 @@
       "configurations": {
         "production": {
           "rspackConfig": "apps/appContainer/rspack.config.prod.ts"
+        },
+        "static": {
+          "rspackConfig": "apps/appContainer/rspack.config.static.ts"
         }
       },
       "dependsOn": ["^build", "typecheck"]
@@ -72,7 +75,7 @@
       "executor": "@nx/rspack:module-federation-dev-server",
       "defaultConfiguration": "production",
       "options": {
-        "buildTarget": "appContainer:build",
+        "buildTarget": "appContainer:build:static",
         "static": true,
         "port": 4200
       },
