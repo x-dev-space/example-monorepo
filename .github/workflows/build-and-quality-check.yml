@@ -25,4 +25,4 @@ jobs:
 
       - uses: ./.github/actions/quality-checks
         with:
-          ZEPHYR_API_KEY: ${{ secrets.ZE_AUTH_TOKEN }}
+          ZE_SECRET_TOKEN: ${{ secrets.ZE_SECRET_TOKEN }}

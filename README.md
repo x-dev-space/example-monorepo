@@ -1,5 +1,9 @@
 # ExampleMonorepo
 
+Some things to note:
+- The .npmrc needed to be updated to prevent post install script from runnings
+- The rspack config changes needed to be renamed so that they don't get inferred by the rspack plugin
+
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
 ✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
