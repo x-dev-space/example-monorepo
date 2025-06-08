@@ -1,7 +1,7 @@
 import { composePlugins, withNx, withReact } from '@nx/rspack';
 import { withModuleFederation } from '@nx/module-federation/rspack';
 import { ModuleFederationConfig } from '@nx/module-federation';
-// import  {withZephyr}  from 'zephyr-rspack-plugin';
+import  {withZephyr}  from 'zephyr-rspack-plugin';
 
 import baseConfig from './module-federation.config';
 
@@ -19,5 +19,6 @@ export default composePlugins(
   withNx(),
   withReact(),
   withModuleFederation(config, { dts: false }),
-  // withZephyr()
+  // @ts-expect-error - zephyr-rspack-plugin is not properly typed
+  withZephyr()
 );
