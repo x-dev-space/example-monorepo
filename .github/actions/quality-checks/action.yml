@@ -46,7 +46,7 @@ runs:
       shell: bash
       continue-on-error: true
       env: 
-        ZEPHYR_API_KEY: ${{ inputs.ZE_AUTH_TOKEN }}
+        ZE_SECRET_TOKEN: ${{ inputs.ZE_AUTH_TOKEN }}
         WITH_ZE: "1"
       run: |
         pnpm nx affected -t build --parallel 10 --nxBail --output-style static --verbose
