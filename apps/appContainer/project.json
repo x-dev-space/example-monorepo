@@ -1,0 +1,94 @@
+{
+  "name": "appContainer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/appContainer/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rspack:rspack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "apps/appContainer/dist",
+        "index": "apps/appContainer/src/index.html",
+        "baseHref": "/",
+        "main": "apps/appContainer/src/main.ts",
+        "tsConfig": "apps/appContainer/tsconfig.app.json",
+        "assets": [
+          "apps/appContainer/src/favicon.ico",
+          "apps/appContainer/src/assets"
+        ],
+        "rspackConfig": "apps/appContainer/rspack.config.ts",
+        "postcssConfig": "apps/appContainer/postcss.config.js",
+        "styles": ["apps/appContainer/src/styles.css"],
+        "scripts": [],
+        "configurations": {
+          "development": {
+            "mode": "development"
+          },
+          "production": {
+            "mode": "production",
+            "optimization": true,
+            "sourceMap": false,
+            "outputHashing": "all",
+            "namedChunks": false,
+            "extractLicenses": true,
+            "vendorChunk": false
+          }
+        },
+        "target": "web"
+      },
+      "configurations": {
+        "production": {
+          "rspackConfig": "apps/appContainer/rspack.config.prod.ts"
+        }
+      },
+      "dependsOn": ["^build", "typecheck"]
+    },
+    "serve": {
+      "executor": "@nx/rspack:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "appContainer:build",
+        "hmr": true,
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "appContainer:build:development"
+        },
+        "production": {
+          "buildTarget": "appContainer:build:production",
+          "hmr": false
+        }
+      },
+      "dependsOn": ["typecheck"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "executor": "@nx/rspack:module-federation-static-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "serveTarget": "appContainer:serve"
+      },
+      "configurations": {
+        "development": {
+          "serveTarget": "appContainer:serve:development"
+        },
+        "production": {
+          "serveTarget": "appContainer:serve:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{projectRoot}/test-output/jest/coverage"],
+      "options": {
+        "jestConfig": "apps/appContainer/jest.config.ts"
+      }
+    }
+  }
+}

@@ -3,5 +3,11 @@
   "compileOnSave": false,
   "files": [],
   "references": [
+    {
+      "path": "./apps/appContainer-e2e"
+    },
+    {
+      "path": "./apps/appContainer"
+    }
   ]
 }
