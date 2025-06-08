@@ -69,10 +69,12 @@
       "executor": "@nx/eslint:lint"
     },
     "serve-static": {
-      "executor": "@nx/rspack:module-federation-static-server",
+      "executor": "@nx/rspack:module-federation-dev-server",
       "defaultConfiguration": "production",
       "options": {
-        "serveTarget": "appContainer:serve"
+        "buildTarget": "appContainer:build",
+        "static": true,
+        "port": 4200
       },
       "configurations": {
         "development": {
