@@ -2,7 +2,7 @@ name: Quality Checks
 description: Run quality checks on the project
 
 inputs:
-  ZEPHYR_API_KEY: 
+  ZE_SECRET_TOKEN: 
     required: true
     type: string
 
@@ -46,8 +46,7 @@ runs:
       shell: bash
       continue-on-error: true
       env: 
-        ZE_SECRET_TOKEN: ${{ inputs.ZE_AUTH_TOKEN }}
-        WITH_ZE: "1"
+        ZE_SECRET_TOKEN: ${{ inputs.ZE_SECRET_TOKEN }}
       run: |
         pnpm nx affected -t build --parallel 10 --nxBail --output-style static --verbose
        
