@@ -3,9 +3,6 @@
   "include": [],
   "references": [
     {
-      "path": "../header"
-    },
-    {
       "path": "./tsconfig.app.json"
     },
     {

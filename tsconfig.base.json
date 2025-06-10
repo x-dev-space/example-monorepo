@@ -18,6 +18,8 @@
     "target": "es2022",
     "customConditions": ["development"],
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "header/Module": ["apps/header/src/remote-entry.ts"]
+    }
   }
 }

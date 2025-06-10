@@ -64,8 +64,8 @@ importers:
         specifier: ^1.36.0
         version: 1.52.0
       '@rspack/cli':
-        specifier: 1.2.2
-        version: 1.2.2(@rspack/core@1.3.9(@swc/helpers@0.5.15))(@types/express@4.17.22)(webpack@5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15)))
+        specifier: 1.3.8
+        version: 1.3.8(@rspack/core@1.3.9(@swc/helpers@0.5.15))(@types/express@4.17.22)(webpack@5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15)))
       '@rspack/core':
         specifier: 1.3.9
         version: 1.3.9(@swc/helpers@0.5.15)
@@ -187,6 +187,10 @@ importers:
   apps/appContainer: {}
 
   apps/appContainer-e2e: {}
+
+  apps/header: {}
+
+  apps/header-e2e: {}
 
 packages:
 
@@ -1880,15 +1884,11 @@ packages:
   '@rspack/binding@1.3.9':
     resolution: {integrity: sha512-3FFen1/0F2aP5uuCm8vPaJOrzM3karCPNMsc5gLCGfEy2rsK38Qinf9W4p1bw7+FhjOTzoSdkX+LFHeMDVxJhw==}
 
-  '@rspack/cli@1.2.2':
-    resolution: {integrity: sha512-d1wsIqmQHjqfo2KKx9TOOW7M4PnD2Viv9FbosXRW/lisvPFJUTwg87onv2x3z4KTCHqplH9T4MCeKmCj+ZNKOw==}
+  '@rspack/cli@1.3.8':
+    resolution: {integrity: sha512-1zp8LZJWBTqwsrjkKPKi7fDmFvwcdBM+t9gOzdyU/tsjSSP56pyReu0tI7hXdVbi4+/5cg9fePfiUWcJL02jiQ==}
     hasBin: true
     peerDependencies:
       '@rspack/core': ^1.0.0-alpha || ^1.x
-      '@rspack/tracing': ^1.x
-    peerDependenciesMeta:
-      '@rspack/tracing':
-        optional: true
 
   '@rspack/core@1.2.8':
     resolution: {integrity: sha512-ppj3uQQtkhgrYDLrUqb33YbpNEZCpAudpfVuOHGsvUrAnu1PijbfJJymoA5ZvUhM+HNMvPI5D1ie97TXyb0UVg==}
@@ -1911,8 +1911,8 @@ packages:
       '@swc/helpers':
         optional: true
 
-  '@rspack/dev-server@1.0.10':
-    resolution: {integrity: sha512-iDsEtP0jNHRm4LJxL00QFTlOuqkdxIFxnd69h0KrFadmtxAWiDLIe4vYdZXWF74w4MezsJFx6dB2nUM/Ok8utA==}
+  '@rspack/dev-server@1.1.1':
+    resolution: {integrity: sha512-9r7vOml2SrFA8cvbcJdSan9wHEo1TPXezF22+s5jvdyAAywg8w7HqDol6TPVv64NUonP1DOdyLxZ+6UW6WZiwg==}
     engines: {node: '>= 18.12.0'}
     peerDependencies:
       '@rspack/core': '*'
@@ -2319,9 +2319,6 @@ packages:
 
   '@types/react@19.0.0':
     resolution: {integrity: sha512-MY3oPudxvMYyesqs/kW1Bh8y9VqSmf+tzqw3ae8a9DZW68pUe3zAdHeI1jc6iAysuRdACnVknHP8AhwD4/dxtg==}
-
-  '@types/retry@0.12.0':
-    resolution: {integrity: sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==}
 
   '@types/retry@0.12.2':
     resolution: {integrity: sha512-XISRgDJ2Tc5q4TRqvgJtzsRkFYNJzZrhTdtMoGVBttwzzQJkPnS3WWTFc7kuDRoPtPakl+T+OfdEUjYJj7Jbow==}
@@ -3045,9 +3042,6 @@ packages:
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
 
-  colorette@2.0.19:
-    resolution: {integrity: sha512-3tlv/dIP7FWvj3BsbHrGLJ6l/oKh1O3TcgBqMn+yyCagOxc23fyzDS6HypQbgxWbkpDnf52p1LuR4eWDQ/K9WQ==}
-
   colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
 
@@ -3268,6 +3262,9 @@ packages:
     resolution: {integrity: sha512-39BOQLs9ZjKh0/patS9nrT8wc3ioX3/eA/zgbKNopnF2wCqJEoxywwwElATYvRsXdnOxA/OQeQoFZ3rFjVajhg==}
     engines: {node: '>=4.0'}
 
+  debounce@1.2.1:
+    resolution: {integrity: sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==}
+
   debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     peerDependencies:
@@ -3337,10 +3334,6 @@ packages:
   default-browser@5.2.1:
     resolution: {integrity: sha512-WY/3TUME0x3KPYdRRxEJJvXRHV4PyPoUsxtZa78lwItwRQRHhd2U9xOscaT/YTf8uCXIAjeJOFBVEh/7FtD8Xg==}
     engines: {node: '>=18'}
-
-  default-gateway@6.0.3:
-    resolution: {integrity: sha512-fwSOJsbbNzZ/CUFpqFBqYfYNLj1NbMPm8MMCIzHjC83iSJRBEGmDUxU+WP661BaBQImeC2yHwXtz+P/O9o+XEg==}
-    engines: {node: '>= 10'}
 
   defaults@1.0.4:
     resolution: {integrity: sha512-eFuaLoy/Rxalv2kr+lqMlUnrDWV+3j4pljOIJgLIhI058IQfWJ7vXhyEIHu+HtC738klGALYxOKDO0bQP3tg8A==}
@@ -5126,8 +5119,8 @@ packages:
     resolution: {integrity: sha512-4aE3U7CCBWgrQlQDMq8da4woBWDGHioJFiOZ8Ie6Yq2uwYQ9V2kGhTz4x3u6Wc+OU17nw0yc3rJ/lQ4jIiPe3A==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  mrmime@1.0.1:
-    resolution: {integrity: sha512-hzzEagAgDyoU1Q6yg5uI+AorQgdvMCur3FcKf7NhMKWsaYg+RnbTyHRa/9IlLF9rf455MOCtcqqrQQ83pPP7Uw==}
+  mrmime@2.0.1:
+    resolution: {integrity: sha512-Y3wQdFg2Va6etvQ5I82yUhGdsKrcYox6p7FfL1LbK2J4V01F9TGlepTIhnK24t7koZibmg82KGglhA1XK5IsLQ==}
     engines: {node: '>=10'}
 
   ms@2.0.0:
@@ -5373,10 +5366,6 @@ packages:
   p-map@7.0.3:
     resolution: {integrity: sha512-VkndIv2fIB99swvQoA65bm+fsmt6UNdGeIB0oxBs+WhAhdh08QA04JXpI7rbB9r08/nkbysKoya9rtDERYOYMA==}
     engines: {node: '>=18'}
-
-  p-retry@4.6.2:
-    resolution: {integrity: sha512-312Id396EbJdvRONlngUx0NydfrIQ5lsYu0znKVUzVvArzEIt08V1qhtyESbGVd1FGX7UKtiFp5uwKZdM8wIuQ==}
-    engines: {node: '>=8'}
 
   p-retry@6.2.1:
     resolution: {integrity: sha512-hEt02O4hUct5wtwg4H4KcWgDdm+l1bOaEy/hWzd8xtXB9BqxTWBBhb+2ImAtH4Cv4rPjV76xN3Zumqk3k3AhhQ==}
@@ -5866,10 +5855,6 @@ packages:
     engines: {node: '>= 0.10'}
     deprecated: Use String.prototype.padEnd() instead
 
-  rimraf@5.0.10:
-    resolution: {integrity: sha512-l0OE8wL34P4nJH/H2ffoaniAokM2qSmrtXHmlpvYr5AVVX8msAyW0l8NVJFDxlSK4u3Uh/f41cQheDVdnYijwQ==}
-    hasBin: true
-
   rslog@1.2.3:
     resolution: {integrity: sha512-antALPJaKBRPBU1X2q9t085K4htWDOOv/K1qhTUk7h0l1ePU/KbDqKJn19eKP0dk7PqMioeA0+fu3gyPXCsXxQ==}
     engines: {node: '>=14.17.6'}
@@ -6167,8 +6152,8 @@ packages:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
 
-  sirv@1.0.19:
-    resolution: {integrity: sha512-JuLThK3TnZG1TAKDwNIqNq6QA2afLOCcm+iE8D1Kj3GA40pSPsxQjjJl0J8X3tsR7T+CP1GavpzLwYkgVLWrZQ==}
+  sirv@2.0.4:
+    resolution: {integrity: sha512-94Bdh3cC2PKrbgSOUqTiGPWVZeSiXfKOVZNJniWoqrWrRkB1CJzBU3NEbiTsPcYy1lDsANA/THzS+9WBiy5nfQ==}
     engines: {node: '>= 10'}
 
   sisteransi@1.0.5:
@@ -6478,8 +6463,8 @@ packages:
     resolution: {integrity: sha512-lbDrTLVsHhOMljPscd0yitpozq7Ga2M5Cvez5AjGg8GASBjtt6iERCAJ93yommPmz62fb45oFIXHEZ3u9bfJEA==}
     engines: {node: '>=14.16'}
 
-  totalist@1.1.0:
-    resolution: {integrity: sha512-gduQwd1rOdDMGxFG1gEvhV88Oirdo2p+KjoYFU7k2g+i7n6AFFbDQ5kMPUsW0pNbfQsB/cwXvT1i4Bue0s9g5g==}
+  totalist@3.0.1:
+    resolution: {integrity: sha512-sf4i37nQ2LBx4m3wB74y+ubopq6W/dIzXg0FDGjsYnZHVa1Da8FH853wlL2gtUhg+xJXjfk3kUZS3BRoQeoQBQ==}
     engines: {node: '>=6'}
 
   tough-cookie@4.1.4:
@@ -6772,8 +6757,8 @@ packages:
     resolution: {integrity: sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==}
     engines: {node: '>=12'}
 
-  webpack-bundle-analyzer@4.6.1:
-    resolution: {integrity: sha512-oKz9Oz9j3rUciLNfpGFjOb49/jEpXNmWdVH8Ls//zNcnLlQdTGXQQMsBbb/gR7Zl8WNLxVCq+0Hqbx3zv6twBw==}
+  webpack-bundle-analyzer@4.10.2:
+    resolution: {integrity: sha512-vJptkMm9pk5si4Bv922ZbKLV8UTT4zib4FPgXMhgzUny0bfDDkLXAVQs3ly3fS4/TN9ROFtb0NFrm04UXFE/Vw==}
     engines: {node: '>= 10.13.0'}
     hasBin: true
 
@@ -6786,8 +6771,8 @@ packages:
       webpack:
         optional: true
 
-  webpack-dev-server@5.0.4:
-    resolution: {integrity: sha512-dljXhUgx3HqKP2d8J/fUMvhxGhzjeNVarDLcbO/EWMSgRizDkxHQDZQaLFL5VJY9tRBj2Gz+rvCEYYvhbqPHNA==}
+  webpack-dev-server@5.2.0:
+    resolution: {integrity: sha512-90SqqYXA2SK36KcT6o1bvwvZfJFcmoamqeJY7+boioffX9g9C0wjjJRGUrQIuh43pb0ttX7+ssavmj/WN2RHtA==}
     engines: {node: '>= 18.12.0'}
     hasBin: true
     peerDependencies:
@@ -6978,10 +6963,6 @@ packages:
 
   yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
-    engines: {node: '>=12'}
-
-  yargs@17.6.2:
-    resolution: {integrity: sha512-1/9UrdHjDZc0eOU0HxOHoS78C69UD3JRMvzlJ7S79S2nTaWRA/whGCTV8o9e/N/1Va9YIV7Q4sOxD8VV4pCWOw==}
     engines: {node: '>=12'}
 
   yargs@17.7.2:
@@ -9291,17 +9272,17 @@ snapshots:
       '@rspack/binding-win32-ia32-msvc': 1.3.9
       '@rspack/binding-win32-x64-msvc': 1.3.9
 
-  '@rspack/cli@1.2.2(@rspack/core@1.3.9(@swc/helpers@0.5.15))(@types/express@4.17.22)(webpack@5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15)))':
+  '@rspack/cli@1.3.8(@rspack/core@1.3.9(@swc/helpers@0.5.15))(@types/express@4.17.22)(webpack@5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15)))':
     dependencies:
       '@discoveryjs/json-ext': 0.5.7
       '@rspack/core': 1.3.9(@swc/helpers@0.5.15)
-      '@rspack/dev-server': 1.0.10(@rspack/core@1.3.9(@swc/helpers@0.5.15))(@types/express@4.17.22)(webpack@5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15)))
-      colorette: 2.0.19
+      '@rspack/dev-server': 1.1.1(@rspack/core@1.3.9(@swc/helpers@0.5.15))(@types/express@4.17.22)(webpack@5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15)))
+      colorette: 2.0.20
       exit-hook: 4.0.0
       interpret: 3.1.1
       rechoir: 0.8.0
-      webpack-bundle-analyzer: 4.6.1
-      yargs: 17.6.2
+      webpack-bundle-analyzer: 4.10.2
+      yargs: 17.7.2
     transitivePeerDependencies:
       - '@types/express'
       - bufferutil
@@ -9329,17 +9310,16 @@ snapshots:
     optionalDependencies:
       '@swc/helpers': 0.5.15
 
-  '@rspack/dev-server@1.0.10(@rspack/core@1.3.9(@swc/helpers@0.5.15))(@types/express@4.17.22)(webpack@5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15)))':
+  '@rspack/dev-server@1.1.1(@rspack/core@1.3.9(@swc/helpers@0.5.15))(@types/express@4.17.22)(webpack@5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15)))':
     dependencies:
       '@rspack/core': 1.3.9(@swc/helpers@0.5.15)
       chokidar: 3.6.0
-      connect-history-api-fallback: 2.0.0
       express: 4.21.2
       http-proxy-middleware: 2.0.9(@types/express@4.17.22)
       mime-types: 2.1.35
-      p-retry: 4.6.2
+      p-retry: 6.2.1
       webpack-dev-middleware: 7.4.2(webpack@5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15)))
-      webpack-dev-server: 5.0.4(webpack@5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15)))
+      webpack-dev-server: 5.2.0(webpack@5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15)))
       ws: 8.18.0
     transitivePeerDependencies:
       - '@types/express'
@@ -9787,8 +9767,6 @@ snapshots:
   '@types/react@19.0.0':
     dependencies:
       csstype: 3.1.3
-
-  '@types/retry@0.12.0': {}
 
   '@types/retry@0.12.2': {}
 
@@ -10679,8 +10657,6 @@ snapshots:
 
   color-name@1.1.4: {}
 
-  colorette@2.0.19: {}
-
   colorette@2.0.20: {}
 
   colorjs.io@0.5.2: {}
@@ -10932,6 +10908,8 @@ snapshots:
 
   date-format@4.0.14: {}
 
+  debounce@1.2.1: {}
+
   debug@2.6.9:
     dependencies:
       ms: 2.0.0
@@ -10972,10 +10950,6 @@ snapshots:
     dependencies:
       bundle-name: 4.1.0
       default-browser-id: 5.0.0
-
-  default-gateway@6.0.3:
-    dependencies:
-      execa: 5.1.1
 
   defaults@1.0.4:
     dependencies:
@@ -13198,7 +13172,7 @@ snapshots:
     dependencies:
       path-exists: 5.0.0
 
-  mrmime@1.0.1: {}
+  mrmime@2.0.1: {}
 
   ms@2.0.0: {}
 
@@ -13487,11 +13461,6 @@ snapshots:
       p-limit: 3.1.0
 
   p-map@7.0.3: {}
-
-  p-retry@4.6.2:
-    dependencies:
-      '@types/retry': 0.12.0
-      retry: 0.13.1
 
   p-retry@6.2.1:
     dependencies:
@@ -13945,10 +13914,6 @@ snapshots:
 
   right-pad@1.0.1: {}
 
-  rimraf@5.0.10:
-    dependencies:
-      glob: 10.4.5
-
   rslog@1.2.3: {}
 
   run-applescript@7.0.0: {}
@@ -14242,11 +14207,11 @@ snapshots:
 
   signal-exit@4.1.0: {}
 
-  sirv@1.0.19:
+  sirv@2.0.4:
     dependencies:
       '@polka/url': 1.0.0-next.29
-      mrmime: 1.0.1
-      totalist: 1.1.0
+      mrmime: 2.0.1
+      totalist: 3.0.1
 
   sisteransi@1.0.5: {}
 
@@ -14633,7 +14598,7 @@ snapshots:
       '@tokenizer/token': 0.3.0
       ieee754: 1.2.1
 
-  totalist@1.1.0: {}
+  totalist@3.0.1: {}
 
   tough-cookie@4.1.4:
     dependencies:
@@ -14920,16 +14885,19 @@ snapshots:
 
   webidl-conversions@7.0.0: {}
 
-  webpack-bundle-analyzer@4.6.1:
+  webpack-bundle-analyzer@4.10.2:
     dependencies:
+      '@discoveryjs/json-ext': 0.5.7
       acorn: 8.14.1
       acorn-walk: 8.3.4
-      chalk: 4.1.2
       commander: 7.2.0
+      debounce: 1.2.1
+      escape-string-regexp: 4.0.0
       gzip-size: 6.0.0
-      lodash: 4.17.21
+      html-escaper: 2.0.2
       opener: 1.5.2
-      sirv: 1.0.19
+      picocolors: 1.1.1
+      sirv: 2.0.4
       ws: 7.5.10
     transitivePeerDependencies:
       - bufferutil
@@ -14946,7 +14914,7 @@ snapshots:
     optionalDependencies:
       webpack: 5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15))
 
-  webpack-dev-server@5.0.4(webpack@5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15))):
+  webpack-dev-server@5.2.0(webpack@5.99.9(@swc/core@1.5.29(@swc/helpers@0.5.15))):
     dependencies:
       '@types/bonjour': 3.5.13
       '@types/connect-history-api-fallback': 1.5.4
@@ -14961,16 +14929,13 @@ snapshots:
       colorette: 2.0.20
       compression: 1.8.0
       connect-history-api-fallback: 2.0.0
-      default-gateway: 6.0.3
       express: 4.21.2
       graceful-fs: 4.2.11
-      html-entities: 2.6.0
       http-proxy-middleware: 2.0.9(@types/express@4.17.22)
       ipaddr.js: 2.2.0
       launch-editor: 2.10.0
       open: 10.1.2
       p-retry: 6.2.1
-      rimraf: 5.0.10
       schema-utils: 4.3.2
       selfsigned: 2.4.1
       serve-index: 1.9.1
@@ -15193,16 +15158,6 @@ snapshots:
   yaml@2.7.1: {}
 
   yargs-parser@21.1.1: {}
-
-  yargs@17.6.2:
-    dependencies:
-      cliui: 8.0.1
-      escalade: 3.2.0
-      get-caller-file: 2.0.5
-      require-directory: 2.1.1
-      string-width: 4.2.3
-      y18n: 5.0.8
-      yargs-parser: 21.1.1
 
   yargs@17.7.2:
     dependencies:
