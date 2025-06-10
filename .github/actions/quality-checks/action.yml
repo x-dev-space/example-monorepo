@@ -21,8 +21,15 @@ runs:
     # Run quality checks and fail the deployment if any of the checks fail
     - name: Run Quality Checks
       shell: bash
+      continue-on-error: true
       run: |
-        pnpm nx affected -t lint typecheck test e2e --parallel 10 --nxBail true
+        node ./.github/scripts/nx-log-parser.js lint typecheck test e2e
+
+    - name: Display Quality Check Summary
+      uses: mshick/add-pr-comment@v2
+      with:
+        message-id: quality-check-summary
+        message-path: ./nx-report.md
 
     - name: Check if E2E test reports created
       id: check_folder
@@ -45,9 +52,21 @@ runs:
     - name: Deploy with Zephyr
       shell: bash
       continue-on-error: true
+      id: deploy-with-zephyr
       env: 
         ZE_SECRET_TOKEN: ${{ inputs.ZE_SECRET_TOKEN }}
       run: |
-        pnpm nx affected -t build --parallel 10 --nxBail --output-style static --verbose
+       node ./.github/scripts/nx-log-parser.js build
+    
+    - name: Display Build Summary
+      uses: mshick/add-pr-comment@v2
+      with:
+        message-id: build-summary
+        message-path: ./nx-report.md
+
+    - name: Workflow Status
+      if: steps.deploy-with-zephyr.outputs.success == 'false'
+      shell: bash
+      run: exit 1
        
   
