@@ -19,9 +19,6 @@ export function App() {
             {/* Navigation */}
             <nav className="hidden md:flex space-x-8">
               <a href="#" className="text-gray-700 hover:text-gray-900">Home</a>
-              <a href="#" className="text-gray-700 hover:text-gray-900">Categories</a>
-              <a href="#" className="text-gray-700 hover:text-gray-900">About Us</a>
-              <a href="#" className="text-gray-700 hover:text-gray-900">Contact Us</a>
             </nav>
 
             {/* Right side icons */}
