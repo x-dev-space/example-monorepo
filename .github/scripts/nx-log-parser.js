@@ -674,10 +674,13 @@ function generateSummary() {
   
   // Set GitHub Actions outputs if in CI
   if (process.env.GITHUB_ACTIONS) {
-    console.log(`total=${totalTasks} >> $GITHUB_OUTPUT`);
-    console.log(`passed=${passedTasks} >> $GITHUB_OUTPUT`);
-    console.log(`failed=${failedTasks} >> $GITHUB_OUTPUT`);
-    console.log(`success=${failedTasks === 0} >> $GITHUB_OUTPUT`);
+    const fs = require('fs');
+    const outputFile = process.env.GITHUB_OUTPUT;
+    
+    fs.appendFileSync(outputFile, `total=${totalTasks}\n`);
+    fs.appendFileSync(outputFile, `passed=${passedTasks}\n`);
+    fs.appendFileSync(outputFile, `failed=${failedTasks}\n`);
+    fs.appendFileSync(outputFile, `success=${failedTasks === 0}\n`);
   }
 }
 
