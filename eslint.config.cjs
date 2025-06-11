@@ -1,11 +1,11 @@
-import nx from '@nx/eslint-plugin';
+const nx = require('@nx/eslint-plugin');
 
-export default [
+module.exports = [
   ...nx.configs['flat/base'],
   ...nx.configs['flat/typescript'],
   ...nx.configs['flat/javascript'],
   {
-    ignores: ['**/dist', '**/out-tsc', '**/test-output'],
+    ignores: ['**/dist','**/out-tsc'],
   },
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
@@ -29,8 +29,6 @@ export default [
     files: [
       '**/*.ts',
       '**/*.tsx',
-      '**/*.cts',
-      '**/*.mts',
       '**/*.js',
       '**/*.jsx',
       '**/*.cjs',
