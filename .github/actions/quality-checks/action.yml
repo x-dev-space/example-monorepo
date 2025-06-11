@@ -50,7 +50,7 @@ runs:
           retention-days: 10
           overwrite: true
 
-    - name: Beployment Workflow Status
+    - name: Quality Check Status
       if: steps.quality-checks.outputs.success == 'false'
       shell: bash
       run: exit 1
@@ -70,7 +70,7 @@ runs:
         message-id: build-summary
         message-path: ./nx-report.md
 
-    - name: Beployment Workflow Status
+    - name: Deployment Workflow Status
       if: steps.deploy-with-zephyr.outputs.success == 'false'
       shell: bash
       run: exit 1
