@@ -10,9 +10,6 @@
       "path": "./apps/appContainer"
     },
     {
-      "path": "./apps/header-e2e"
-    },
-    {
       "path": "./apps/header"
     }
   ]
