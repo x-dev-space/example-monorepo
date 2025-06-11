@@ -59,7 +59,7 @@
       "defaultConfiguration": "static",
       "options": {
         "buildTarget": "header:build:static",
-        "port": 4201
+        "port": 3001
       }
     },
     "test": {
