@@ -27,7 +27,6 @@ export default defineConfig({
   webServer: {
     command: 'pnpm exec nx run appContainer:serve-static',
     url: 'http://localhost:4200',
-    reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
   projects: [

@@ -27,6 +27,12 @@
           "optimization": true,
           "sourceMap": false,
           "rspackConfig": "apps/header/rspack.config.prod.ts"
+        },
+        "static":{
+          "mode": "production",
+          "optimization": true,
+          "sourceMap": false,
+          "rspackConfig": "apps/header/rspack.config.static.ts"
         }
       },
       "dependsOn": ["^build", "typecheck"]
@@ -52,7 +58,7 @@
       "executor": "@nx/rspack:module-federation-dev-server",
       "defaultConfiguration": "production",
       "options": {
-        "buildTarget": "header:build:production",
+        "buildTarget": "header:build:static",
         "port": 4201
       },
       "configurations": {

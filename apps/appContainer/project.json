@@ -30,6 +30,12 @@
           "optimization": true,
           "sourceMap": false,
           "rspackConfig": "apps/appContainer/rspack.config.prod.ts"
+        },
+        "static":{
+          "mode": "production",
+          "optimization": true,
+          "sourceMap": false,
+          "rspackConfig": "apps/appContainer/rspack.config.static.ts"
         }
       },
       "dependsOn": ["^build", "typecheck"]
@@ -55,7 +61,7 @@
       "executor": "@nx/rspack:module-federation-dev-server",
       "defaultConfiguration": "production",
       "options": {
-        "buildTarget": "appContainer:build:production",
+        "buildTarget": "appContainer:build:static",
         "port": 4200
       },
       "configurations": {
