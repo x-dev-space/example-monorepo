@@ -56,18 +56,10 @@
     },
     "serve-static": {
       "executor": "@nx/rspack:module-federation-dev-server",
-      "defaultConfiguration": "production",
+      "defaultConfiguration": "static",
       "options": {
         "buildTarget": "header:build:static",
         "port": 4201
-      },
-      "configurations": {
-        "development": {
-          "serveTarget": "header:serve:development"
-        },
-        "production": {
-          "serveTarget": "header:serve:production"
-        }
       }
     },
     "test": {
