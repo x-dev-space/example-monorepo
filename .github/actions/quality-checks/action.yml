@@ -51,7 +51,7 @@ runs:
           overwrite: true
 
     - name: Beployment Workflow Status
-      if: steps.uality-checks.outputs.success == 'false'
+      if: steps.quality-checks.outputs.success == 'false'
       shell: bash
       run: exit 1
 
