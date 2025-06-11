@@ -6,5 +6,9 @@
     "name": "appContainer",
     "projectType": "application",
     "sourceRoot": "apps/appContainer/src"
+  }, 
+  "zephyr:dependencies": {
+    "header": "workspace:*", 
+    "couponCode": "workspace:*"
   }
 }

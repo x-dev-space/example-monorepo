@@ -185,6 +185,10 @@ importers:
 
   apps/appContainer-e2e: {}
 
+  apps/couponCode: {}
+
+  apps/couponCode-e2e: {}
+
   apps/header: {}
 
   apps/header-e2e: {}
@@ -11158,7 +11162,7 @@ snapshots:
 
   axe-core@4.10.3: {}
 
-  axios-retry@4.5.0(axios@1.9.0):
+  axios-retry@4.5.0(axios@1.9.0(debug@4.4.1)):
     dependencies:
       axios: 1.9.0(debug@4.4.1)
       is-retry-allowed: 2.2.0
@@ -16571,7 +16575,7 @@ snapshots:
   zephyr-agent@0.0.53(encoding@0.1.13):
     dependencies:
       axios: 1.9.0(debug@4.4.1)
-      axios-retry: 4.5.0(axios@1.9.0)
+      axios-retry: 4.5.0(axios@1.9.0(debug@4.4.1))
       cloudflare: 3.5.0(encoding@0.1.13)
       debug: 4.4.1
       git-url-parse: 15.0.0

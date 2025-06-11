@@ -1,6 +1,7 @@
-import  { useState, lazy } from 'react';
+import  { useState, lazy, Suspense} from 'react';
 import { Trash2, Plus, Minus } from 'lucide-react';
 const Header = lazy(() => import('header/Module'));
+const CouponCode = lazy(() => import('couponCode/Module'));
 
 const ShoppingCartApp = () => {
   const [cartItems, setCartItems] = useState([
@@ -46,7 +47,6 @@ const ShoppingCartApp = () => {
     }
   ]);
 
-  const [couponCode, setCouponCode] = useState('');
 
   const updateQuantity = (id: number, change: number) => {
     setCartItems(items =>
@@ -70,7 +70,9 @@ const ShoppingCartApp = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <Header />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Header />
+      </Suspense>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -140,19 +142,10 @@ const ShoppingCartApp = () => {
           {/* Right Column */}
           <div className="space-y-6">
             {/* Coupon Code */}
-            <div className="bg-white rounded-lg shadow p-6">
-              <h3 className="text-lg font-semibold mb-4">Coupon Code</h3>
-              <input
-                type="text"
-                placeholder="Enter Your Coupon Code"
-                value={couponCode}
-                onChange={(e) => setCouponCode(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button className="w-full bg-white text-blue-600 border-2 border-blue-600 py-2 rounded-lg hover:bg-blue-50 transition">
-                Apply Your Coupon
-              </button>
-            </div>
+            <Suspense fallback={<div>Loading...</div>}>
+              <CouponCode />
+            </Suspense>
+            
 
             {/* Order Summary */}
             <div className="bg-white rounded-lg shadow p-6">

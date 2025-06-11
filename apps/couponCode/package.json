@@ -1,0 +1,10 @@
+{
+  "name": "couponCode",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "name": "couponCode",
+    "projectType": "application",
+    "sourceRoot": "apps/couponCode/src"
+  }
+}

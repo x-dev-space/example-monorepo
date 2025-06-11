@@ -1,0 +1,76 @@
+{
+  "name": "couponCode",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/couponCode/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rspack:rspack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "web",
+        "outputPath": "dist/apps/couponCode",
+        "index": "apps/couponCode/src/index.html",
+        "main": "apps/couponCode/src/main.ts",
+        "tsConfig": "apps/couponCode/tsconfig.app.json",
+        "rspackConfig": "apps/couponCode/rspack.config.ts",
+        "assets": [
+          "apps/couponCode/src/favicon.ico",
+          "apps/couponCode/src/assets"
+        ]
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production",
+          "optimization": true,
+          "sourceMap": false,
+          "rspackConfig": "apps/couponCode/rspack.config.prod.ts"
+        },
+        "static":{
+          "mode": "production",
+          "optimization": true,
+          "sourceMap": false,
+          "rspackConfig": "apps/couponCode/rspack.config.static.ts"
+        }
+      },
+      "dependsOn": ["^build", "typecheck"]
+    },
+    "serve": {
+      "executor": "@nx/rspack:module-federation-dev-server",
+      "options": {
+        "buildTarget": "couponCode:build:development",
+        "port": 4202
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "buildTarget": "couponCode:build:production"
+        }
+      },
+      "dependsOn": ["typecheck"]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "executor": "@nx/rspack:module-federation-dev-server",
+      "defaultConfiguration": "static",
+      "options": {
+        "buildTarget": "couponCode:build:static",
+        "port": 3002
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{projectRoot}/test-output/jest/coverage"],
+      "options": {
+        "jestConfig": "apps/couponCode/jest.config.ts"
+      }
+    }
+  }
+}
