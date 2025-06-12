@@ -1,7 +1,9 @@
 name: Deploy to Production
 
 on:
+  # Trigger on PR merge to main
   pull_request:
+    types: [closed]
     branches:
       - main
 
@@ -14,9 +16,9 @@ jobs:
   deploy-prod:
     # For PR trigger: only run if PR was merged
     # For push trigger: always run
-    # if: |
-    #   (github.event_name == 'pull_request' && github.event.pull_request.merged == true) ||
-    #   github.event_name == 'push'
+    if: |
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true) ||
+      github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
