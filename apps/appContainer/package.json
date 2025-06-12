@@ -1,5 +1,14 @@
 {
   "name": "appContainer",
   "version": "0.0.1",
-  "private": true
+  "private": true,
+  "nx": {
+    "name": "appContainer",
+    "projectType": "application",
+    "sourceRoot": "apps/appContainer/src"
+  }, 
+  "zephyr:dependencies": {
+    "header": "workspace:*", 
+    "couponCode": "workspace:*"
+  }
 }

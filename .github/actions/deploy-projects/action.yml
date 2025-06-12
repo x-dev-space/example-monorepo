@@ -2,7 +2,7 @@ name: Deploy Projects
 description: Deploy projects to production
 
 inputs:
-  ZEPHYR_API_KEY: 
+  ZE_SECRET_TOKEN: 
     required: true
     type: string
 
@@ -20,9 +20,16 @@ runs:
 
     # Run quality checks and fail the deployment if any of the checks fail
     - name: Run affected E2E Tests
+      id: affected-e2e-tests
       shell: bash
       run: |
-        pnpm nx affected -t e2e --parallel 10 --nxBail true
+        node ./.github/scripts/nx-log-parser.js e2e
+
+    - name: Display E2E Summary
+      uses: mshick/add-pr-comment@v2
+      with:
+        message-id: e2e-summary
+        message-path: ./nx-report.md
 
 
     - name: Check if E2E test reports created
@@ -43,13 +50,29 @@ runs:
           retention-days: 10
           overwrite: true
 
+    - name: Quality Check Status
+      if: steps.affected-e2e-tests.outputs.success == 'false'
+      shell: bash
+      run: exit 1
+
     - name: Deploy with Zephyr
+      id: deploy-with-zephyr
       shell: bash
       continue-on-error: true
       env: 
-        ZEPHYR_API_KEY: ${{ inputs.ZEPHYR_API_KEY }}
-        WITH_ZE: "1"
+        ZE_SECRET_TOKEN: ${{ inputs.ZE_SECRET_TOKEN }}
       run: |
-        pnpm nx affected -t build --parallel 10 --nxBail --output-style static
+        node ./.github/scripts/nx-log-parser.js build --prod
+
+    - name: Display Build Summary
+      uses: mshick/add-pr-comment@v2
+      with:
+        message-id: deployment-build-summary
+        message-path: ./nx-report.md
+
+    - name: Deployment Workflow Status
+      if: steps.deploy-with-zephyr.outputs.success == 'false'
+      shell: bash
+      run: exit 1
        
   

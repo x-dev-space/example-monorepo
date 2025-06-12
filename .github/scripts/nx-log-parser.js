@@ -9,6 +9,7 @@ const args = process.argv.slice(2);
 let configuration = null;
 const validTasks = ['lint', 'typecheck', 'test', 'e2e', 'build'];
 const tasks = [];
+let isStageDeployment = true;
 
 // Show help if requested
 if (args.includes('--help') || args.includes('-h')) {
@@ -58,6 +59,9 @@ for (let i = 0; i < args.length; i++) {
   else if (validTasks.includes(arg)) {
     tasks.push(arg);
   }
+  else if(arg === '--prod') {
+    isStageDeployment = false
+  }
   // Unknown argument
   else {
     console.error(`❌ Error: Unknown argument '${arg}'`);
@@ -77,6 +81,7 @@ const timestamp = Date.now();
 const LOG_FILE = `nx-build-${timestamp}.log`;
 const REPORT_FILE = 'nx-report.md';
 const SUMMARY_FILE = 'nx-summary.json';
+const DEPLOYMENT_ENV = isStageDeployment ? 'stage' : 'prod';
 
 // Task tracking
 const taskList = [];
@@ -461,8 +466,8 @@ function saveTaskDetails() {
       // Check if this is a build task
       if (currentFullTask && currentFullTask.includes('build') && buildUrls[currentProject]) {
         const previewUrl = buildUrls[currentProject];
-        const stageUrl = `https://stage-env-${currentProject.toLowerCase()}-example-monorepo-x-dev-space-ze.zephyrcloud.app/`;
-        taskDetails[key] = `**Preview:** ${previewUrl}<br>**Stage:** ${stageUrl}`;
+        const buildUrl = `https://${DEPLOYMENT_ENV}-env-${currentProject.toLowerCase()}-example-monorepo-x-dev-space-ze.zephyrcloud.app/`;
+        taskDetails[key] = `**Preview:** ${previewUrl}<br>**${DEPLOYMENT_ENV.toUpperCase()}:** ${buildUrl}`;
       }
   }
 }
@@ -633,9 +638,9 @@ function generateReport() {
     if (hasBuildTask && buildUrls[project]) {
       report += `#### 🔗 Build URLs:\n`;
       const previewUrl = buildUrls[project];
-      const stageUrl = `https://stage-env-${project.toLowerCase()}-example-monorepo-x-dev-space-ze.zephyrcloud.app/`;
+      const buildUrl = `https://${DEPLOYMENT_ENV}-env-${project.toLowerCase()}-example-monorepo-x-dev-space-ze.zephyrcloud.app/`;
       report += `- **Preview:** ${previewUrl}\n`;
-      report += `- **Stage:** ${stageUrl}\n\n`;
+      report += `- **${DEPLOYMENT_ENV.toUpperCase()}:** ${buildUrl}\n\n`;
     }
   });
   
@@ -674,10 +679,13 @@ function generateSummary() {
   
   // Set GitHub Actions outputs if in CI
   if (process.env.GITHUB_ACTIONS) {
-    console.log(`total=${totalTasks} >> $GITHUB_OUTPUT`);
-    console.log(`passed=${passedTasks} >> $GITHUB_OUTPUT`);
-    console.log(`failed=${failedTasks} >> $GITHUB_OUTPUT`);
-    console.log(`success=${failedTasks === 0} >> $GITHUB_OUTPUT`);
+    const fs = require('fs');
+    const outputFile = process.env.GITHUB_OUTPUT;
+    
+    fs.appendFileSync(outputFile, `total=${totalTasks}\n`);
+    fs.appendFileSync(outputFile, `passed=${passedTasks}\n`);
+    fs.appendFileSync(outputFile, `failed=${failedTasks}\n`);
+    fs.appendFileSync(outputFile, `success=${failedTasks === 0}\n`);
   }
 }
 

@@ -1,0 +1,26 @@
+{
+  "name": "header-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "projectType": "application",
+    "sourceRoot": "apps/header-e2e/src",
+    "implicitDependencies": [
+      "header"
+    ],
+    "targets": {
+      "e2e": {
+        "executor": "@nx/playwright:playwright",
+        "outputs": [
+          "{workspaceRoot}/dist/.playwright/apps/header-e2e"
+        ],
+        "options": {
+          "config": "apps/header-e2e/playwright.config.ts"
+        }
+      },
+      "lint": {
+        "executor": "@nx/eslint:lint"
+      }
+    }
+  }
+}

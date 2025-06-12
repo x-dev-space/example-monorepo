@@ -3,6 +3,12 @@
   "include": [],
   "references": [
     {
+      "path": "../couponCode"
+    },
+    {
+      "path": "../header"
+    },
+    {
       "path": "./tsconfig.app.json"
     },
     {

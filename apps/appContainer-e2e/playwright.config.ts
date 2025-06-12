@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import { nxE2EPreset } from '@nx/playwright/preset';
+
 import { workspaceRoot } from '@nx/devkit';
 
 // For CI, you may want to set BASE_URL to the deployed application.
@@ -26,7 +27,6 @@ export default defineConfig({
   webServer: {
     command: 'pnpm exec nx run appContainer:serve-static',
     url: 'http://localhost:4200',
-    reuseExistingServer: !process.env.CI,
     cwd: workspaceRoot,
   },
   projects: [

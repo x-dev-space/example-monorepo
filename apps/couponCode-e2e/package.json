@@ -1,0 +1,26 @@
+{
+  "name": "couponCode-e2e",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "projectType": "application",
+    "sourceRoot": "apps/couponCode-e2e/src",
+    "implicitDependencies": [
+      "couponCode"
+    ],
+    "targets": {
+      "e2e": {
+        "executor": "@nx/playwright:playwright",
+        "outputs": [
+          "{workspaceRoot}/dist/.playwright/apps/couponCode-e2e"
+        ],
+        "options": {
+          "config": "apps/couponCode-e2e/playwright.config.ts"
+        }
+      },
+      "lint": {
+        "executor": "@nx/eslint:lint"
+      }
+    }
+  }
+}

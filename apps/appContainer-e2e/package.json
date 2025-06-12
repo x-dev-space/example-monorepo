@@ -1,5 +1,26 @@
 {
   "name": "appContainer-e2e",
   "version": "0.0.1",
-  "private": true
+  "private": true,
+  "nx": {
+    "projectType": "application",
+    "sourceRoot": "apps/appContainer-e2e/src",
+    "implicitDependencies": [
+      "appContainer"
+    ],
+    "targets": {
+      "e2e": {
+        "executor": "@nx/playwright:playwright",
+        "outputs": [
+          "{workspaceRoot}/dist/.playwright/apps/appContainer-e2e"
+        ],
+        "options": {
+          "config": "apps/appContainer-e2e/playwright.config.ts"
+        }
+      },
+      "lint": {
+        "executor": "@nx/eslint:lint"
+      }
+    }
+  }
 }

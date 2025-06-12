@@ -8,6 +8,18 @@
     },
     {
       "path": "./apps/appContainer"
+    },
+    {
+      "path": "./apps/header-e2e"
+    },
+    {
+      "path": "./apps/header"
+    },
+    {
+      "path": "./apps/couponCode-e2e"
+    },
+    {
+      "path": "./apps/couponCode"
     }
   ]
 }

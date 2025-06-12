@@ -7,7 +7,7 @@ export function App() {
   return (
     <React.Suspense fallback={null}>
       <Routes>
-        <Route path="/" element={<AppContainer/>} />
+        <Route path="/" element={<AppContainer />} />
       </Routes>
     </React.Suspense>
   );
