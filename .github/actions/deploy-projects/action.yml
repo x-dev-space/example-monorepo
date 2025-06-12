@@ -63,7 +63,7 @@ runs:
         ZEPHYR_API_KEY: ${{ inputs.ZEPHYR_API_KEY }}
         WITH_ZE: "1"
       run: |
-        node ./.github/scripts/nx-log-parser.js e2e
+        node ./.github/scripts/nx-log-parser.js build
 
     - name: Display Build Summary
       uses: mshick/add-pr-comment@v2
