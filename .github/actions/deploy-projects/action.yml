@@ -62,7 +62,7 @@ runs:
       env: 
         ZE_SECRET_TOKEN: ${{ inputs.ZE_SECRET_TOKEN }}
       run: |
-        node ./.github/scripts/nx-log-parser.js build
+        node ./.github/scripts/nx-log-parser.js build --prod
 
     - name: Display Build Summary
       uses: mshick/add-pr-comment@v2
