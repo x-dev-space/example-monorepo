@@ -2,7 +2,7 @@ name: Deploy Projects
 description: Deploy projects to production
 
 inputs:
-  ZEPHYR_API_KEY: 
+  ZE_SECRET_TOKEN: 
     required: true
     type: string
 
@@ -60,8 +60,7 @@ runs:
       shell: bash
       continue-on-error: true
       env: 
-        ZEPHYR_API_KEY: ${{ inputs.ZEPHYR_API_KEY }}
-        WITH_ZE: "1"
+        ZE_SECRET_TOKEN: ${{ inputs.ZE_SECRET_TOKEN }}
       run: |
         node ./.github/scripts/nx-log-parser.js build
 

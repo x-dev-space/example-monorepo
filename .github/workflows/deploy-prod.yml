@@ -30,4 +30,4 @@ jobs:
       - name: Run E2E and Deploy to Prod
         uses: ./.github/actions/deploy-projects
         with:
-          ZEPHYR_API_KEY: ${{ secrets.ZE_AUTH_TOKEN }}
+          ZE_SECRET_TOKEN: ${{ secrets.ZE_SECRET_TOKEN }}
