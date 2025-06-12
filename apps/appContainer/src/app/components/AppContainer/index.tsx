@@ -172,7 +172,7 @@ const ShoppingCartApp = () => {
 
             {/* Payment Method */}
             <div className="bg-white rounded-lg shadow p-6">
-              <h3 className="text-lg font-semibold mb-4">Payment Methods</h3>
+              <h3 className="text-lg font-semibold mb-4">Payment Method</h3>
               <div className="grid grid-cols-4 gap-3">
                 <div className="border border-gray-300 rounded-lg p-3 flex items-center justify-center cursor-pointer hover:border-blue-500">
                   <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold text-xs">P</div>
