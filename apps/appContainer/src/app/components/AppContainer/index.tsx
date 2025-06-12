@@ -10,7 +10,7 @@ const ShoppingCartApp = () => {
       name: 'Samsung Galaxy S23 Ultra S918B/DS 256GB',
       color: 'Phantom Black',
       price: 1049.99,
-      quantity: 2,
+      quantity: 3,
       image: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"%3E%3Crect width="60" height="60" fill="%23374151"/%3E%3Crect x="15" y="10" width="30" height="40" rx="4" fill="%231f2937"/%3E%3C/svg%3E'
     },
     {
